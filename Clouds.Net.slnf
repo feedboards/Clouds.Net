@@ -1,0 +1,8 @@
+{
+  "solution": {
+    "path": "Clouds.Net.sln",
+    "projects": [
+      "src\\Clouds.Net.AWS\\Clouds.Net.AWS.csproj"
+    ]
+  }
+}

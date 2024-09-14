@@ -1,6 +1,5 @@
 ﻿using Amazon.SimpleEmail;
 using Amazon.SimpleEmail.Model;
-using Clouds.Net.AWS;
 using Clouds.Net.AWS.DTOs.Request;
 using Clouds.Net.AWS.Interfaces;
 using Clouds.Net.AWS.Utils;

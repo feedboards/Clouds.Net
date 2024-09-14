@@ -1,6 +1,5 @@
 ﻿using Amazon.SQS;
 using Amazon.SQS.Model;
-using Clouds.Net.AWS;
 using Clouds.Net.AWS.Interfaces;
 using Clouds.Net.AWS.Utils;
 using Newtonsoft.Json;

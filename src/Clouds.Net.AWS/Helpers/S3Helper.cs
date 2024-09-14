@@ -1,7 +1,6 @@
 ﻿using Amazon.S3;
 using Amazon.S3.Model;
 using Amazon.S3.Transfer;
-using Clouds.Net.AWS;
 using Clouds.Net.AWS.Interfaces;
 using Clouds.Net.AWS.Utils;
 using System.Net;

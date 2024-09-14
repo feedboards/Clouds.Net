@@ -8,7 +8,7 @@
 	<Authors>Katyara11;Katyaraa1</Authors>
 	<Company>feedboards</Company>
 	<Product>Clouds.Net.AWS</Product>
-	<PackageId>feedboard.com/Clouds.Net.AWS</PackageId>
+	<PackageId>Clouds.Net.AWS</PackageId>
 	<Description>Libraries for Clouds aiming to simplify works with AWS and Azure clouds</Description>
 	<PackageTags>AWS;Amazon;cloud;S3;SQS;SES;Cognito</PackageTags>
 	<RepositoryUrl>https://github.com/feedboards/Clouds.Net</RepositoryUrl>

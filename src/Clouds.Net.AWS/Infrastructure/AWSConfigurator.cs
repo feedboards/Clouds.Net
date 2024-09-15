@@ -224,7 +224,7 @@ namespace Clouds.Net.AWS.Infrastructure
         }
         #endregion
 
-        public IAWSConfigurator SetCredentials(string accessKey, string secretKey)
+        public IAWSConfigurator SetDefaultCredentials(string accessKey, string secretKey)
         {
             _awsOptions.AccessKey = accessKey;
             _awsOptions.SecretKey = secretKey;

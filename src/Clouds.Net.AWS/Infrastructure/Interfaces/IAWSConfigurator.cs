@@ -3,7 +3,7 @@
     public interface IAWSConfigurator
     {
         IAWSConfigurator SetDefaultRegion(string region);
-        IAWSConfigurator SetCredentials(string accessKey, string secretKey);
+        IAWSConfigurator SetDefaultCredentials(string accessKey, string secretKey);
         IAWSConfigurator UseLocalStack(string? url = null);
 
         #region S3

@@ -11,7 +11,7 @@ namespace API
             _s3Helper = s3Helper;
         }
 
-        public async void Run()
+        public async Task Run()
         {
             var yourStream = new MemoryStream();
             var yourExpires = TimeSpan.FromDays(1);

@@ -164,7 +164,7 @@ namespace API
             _s3Helper = s3Helper;
         }
 
-        public async void Run()
+        public async Task Run()
         {
             var yourStream = new MemoryStream();
             var yourExpires = TimeSpan.FromDays(1);
@@ -200,6 +200,119 @@ namespace API
             _s3Helper.GetS3Key("your-file-name", new List<string> { "your-folder" });
 
             _s3Helper.GetS3KeyFromUrl("your-url");
+        }
+    }
+}
+```
+
+## Amazon Cognito
+
+```c#
+using Amazon.CognitoIdentityProvider.Model;
+using Clouds.Net.AWS.Interfaces;
+
+namespace API
+{
+    public class Cognito
+    {
+        public readonly ICognitoHelper _cognitoHelper;
+
+        public Cognito(ICognitoHelper cognitoHelper)
+        {
+            _cognitoHelper = cognitoHelper;
+        }
+
+        public async Task Run()
+        {
+            await _cognitoHelper.GetUserAsync("user-access-token");
+
+            await _cognitoHelper.DeleteUserAsync("user-email");
+
+            await _cognitoHelper.InitiateAuthAsync("user-email", "user-password");
+
+            var attributes = new List<AttributeType>(); // list of your attributes
+
+            await _cognitoHelper.SignUpAsync("user-username", "user-password", attributes);
+
+            await _cognitoHelper.GetUserRoleAsync("user-access-token");
+
+            _cognitoHelper.GetSubIdByAccessToken("user-access-key");
+        }
+    }
+}
+```
+
+## Amazon SES
+
+```c#
+using Clouds.Net.AWS.DTOs.Request;
+using Clouds.Net.AWS.Interfaces;
+
+namespace API
+{
+    public class SES
+    {
+        public readonly ISESHelper _SESHelper;
+
+        public SES(ISESHelper SESHelper)
+        {
+            _SESHelper = SESHelper;
+        }
+
+        public async Task Run()
+        {
+            var message = new SESRequestDto()
+            {
+                ReceiverAddress = "user-email",
+                Subject = "subject",
+                TextBody = "your-message",
+                HtmlBody = "your-html-code"
+            };
+
+            await _SESHelper.SendMail(message, "your-email");
+        }
+    }
+}
+```
+
+## Amazon SQS
+
+```c#
+using Amazon.SQS.Model;
+using Clouds.Net.AWS.Interfaces;
+
+namespace API
+{
+    public class SQS
+    {
+        public readonly ISQSHelper _SQSHelper;
+
+        public SQS(ISQSHelper SQSHelper)
+        {
+            _SQSHelper = SQSHelper;
+        }
+
+        public async Task Run()
+        {
+            var waitTimeSeconds = 5;
+
+            await _SQSHelper.WaitForNewMessages<string>(waitTimeSeconds, "your-queue-url");
+
+            var yourMessages = new List<Message>();
+
+            await _SQSHelper.DeleteMessages(yourMessages, "your-queue-url");
+
+            var yourMessage = new Message();
+
+            await _SQSHelper.DeleteMessage(yourMessage, "your-queue-url");
+
+            var yourMessagesWithOwnType = new List<string>() { "your-message" };
+
+            await _SQSHelper.AddNewMessages<string>(yourMessagesWithOwnType, "your-queue-url");
+
+            var yourMessageWithOwnType = "your-message";
+
+            await _SQSHelper.AddNewMessage<string>(yourMessageWithOwnType, "your-queue-url");
         }
     }
 }

@@ -84,19 +84,15 @@ namespace Clouds.Net.AWS.Helpers
             });
         }
 
-        public async Task<SignUpResponse> SignUpAsync(string email, string password, string role)
+        public async Task<SignUpResponse> SignUpAsync(string username, string password, List<AttributeType> attributes)
         {
             return await _providerClient.SignUpAsync(new SignUpRequest
             {
                 ClientId = _clientId,
-                SecretHash = GenerateSecretHash(email),
-                Username = email,
+                SecretHash = GenerateSecretHash(username),
+                Username = username,
                 Password = password,
-                UserAttributes = new List<AttributeType>
-                {
-                    new AttributeType { Name = "email", Value = email },
-                    new AttributeType { Name = "custom:Role", Value = role },
-                }
+                UserAttributes = attributes
             });
         }
 

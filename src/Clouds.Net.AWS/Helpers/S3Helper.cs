@@ -77,14 +77,14 @@ namespace Clouds.Net.AWS.Helpers
             }
         }
 
-        public async Task DownloadAsync(string localFile, string s3Key)
+        public async Task DownloadAsync(string path, string s3Key)
         {
-            await DownloadAsync(localFile, _bucketName, s3Key);
+            await DownloadAsync(path, _bucketName, s3Key);
         }
 
-        public async Task DownloadAsync(string bucketName, string localFile, string s3Key)
+        public async Task DownloadAsync(string bucketName, string path, string s3Key)
         {
-            await _transferUtility.DownloadAsync(localFile, bucketName, s3Key);
+            await _transferUtility.DownloadAsync(path, bucketName, s3Key);
         }
 
         public async Task DeleteAsync(string s3Key)
@@ -97,17 +97,17 @@ namespace Clouds.Net.AWS.Helpers
             await _client.DeleteObjectAsync(bucketName, s3Key);
         }
 
-        public async Task UploadOrUpdateAsPublicToReadAsync(string localFile, string s3Key)
+        public async Task UploadOrUpdateAsPublicToReadAsync(string path, string s3Key)
         {
-            await UploadOrUpdateAsPublicToReadAsync(_bucketName, localFile, s3Key);
+            await UploadOrUpdateAsPublicToReadAsync(_bucketName, path, s3Key);
         }
 
-        public async Task UploadOrUpdateAsPublicToReadAsync(string bucketName, string localFile, string s3Key)
+        public async Task UploadOrUpdateAsPublicToReadAsync(string bucketName, string path, string s3Key)
         {
             await _transferUtility.UploadAsync(new TransferUtilityUploadRequest()
             {
                 BucketName = bucketName,
-                FilePath = localFile,
+                FilePath = path,
                 Key = s3Key,
                 CannedACL = S3CannedACL.PublicRead
             });
@@ -129,14 +129,14 @@ namespace Clouds.Net.AWS.Helpers
             });
         }
 
-        public async Task UploadOrUpdateAsync(string localFile, string s3Key)
+        public async Task UploadOrUpdateAsync(string path, string s3Key)
         {
-            await UploadOrUpdateAsync(_bucketName, localFile, s3Key);
+            await UploadOrUpdateAsync(_bucketName, path, s3Key);
         }
 
-        public async Task UploadOrUpdateAsync(string bucketName, string localFile, string s3Key)
+        public async Task UploadOrUpdateAsync(string bucketName, string path, string s3Key)
         {
-            await _transferUtility.UploadAsync(localFile, bucketName, s3Key);
+            await _transferUtility.UploadAsync(path, bucketName, s3Key);
         }
 
         public async Task UploadOrUpdateAsync(Stream stream, string s3Key)

@@ -13,7 +13,6 @@
 	<PackageTags>AWS;Amazon;cloud;S3;SQS;SES;Cognito</PackageTags>
 	<RepositoryUrl>https://github.com/feedboards/Clouds.Net.AWS</RepositoryUrl>
 	<RepositoryType>git</RepositoryType>
-	<PackageReadmeFile>../README.md</PackageReadmeFile>
   </PropertyGroup>
 	
 	<ItemGroup>

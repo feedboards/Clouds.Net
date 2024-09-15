@@ -33,6 +33,7 @@ namespace Clouds.Net.AWS.Interfaces
         string GetObjectUrlByNow(string s3Key, TimeSpan expires);
         string GetObjectUrlByNow(string bucketName, string s3Key, TimeSpan expires);
         string GetS3Key(string file, List<string> folders);
+        string GetS3Key(string file);
         string GetS3KeyFromUrl(string url);
     }
 }

@@ -254,6 +254,11 @@ namespace Clouds.Net.AWS.Helpers
             return $"{s3KeyBuilder}/{file}";
         }
 
+        public string GetS3Key(string file)
+        {
+            return file;
+        }
+
         public string GetS3KeyFromUrl(string url)
         {
             return Uri.UnescapeDataString(new Uri(url).AbsolutePath[1..]);

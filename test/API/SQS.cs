@@ -5,7 +5,7 @@ namespace API
 {
     public class SQS
     {
-        public readonly ISQSHelper _SQSHelper;
+        private readonly ISQSHelper _SQSHelper;
 
         public SQS(ISQSHelper SQSHelper)
         {

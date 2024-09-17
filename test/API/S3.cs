@@ -4,7 +4,7 @@ namespace API
 {
     public class S3
     {
-        public readonly IS3Helper _s3Helper;
+        private readonly IS3Helper _s3Helper;
 
         public S3(IS3Helper s3Helper)
         {

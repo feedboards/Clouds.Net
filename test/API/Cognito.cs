@@ -5,7 +5,7 @@ namespace API
 {
     public class Cognito
     {
-        public readonly ICognitoHelper _cognitoHelper;
+        private readonly ICognitoHelper _cognitoHelper;
 
         public Cognito(ICognitoHelper cognitoHelper)
         {

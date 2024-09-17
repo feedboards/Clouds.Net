@@ -5,7 +5,7 @@ namespace API
 {
     public class SES
     {
-        public readonly ISESHelper _SESHelper;
+        private readonly ISESHelper _SESHelper;
 
         public SES(ISESHelper SESHelper)
         {

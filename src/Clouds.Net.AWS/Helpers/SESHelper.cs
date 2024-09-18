@@ -8,30 +8,30 @@ namespace Clouds.Net.AWS.Helpers
 {
     public class SESHelper : ISESHelper
     {
-        public readonly AmazonSimpleEmailServiceClient _client;
+        private readonly AmazonSimpleEmailServiceClient _client;
         private readonly string _sourceMail;
 
         public SESHelper(
-            string SESUserAccessKey,
-            string SESUserSecretAccessKey,
+            string accessKey,
+            string secretKey,
             string sourceMail)
             : this(
-                  SESUserAccessKey,
-                  SESUserSecretAccessKey,
+                accessKey,
+                  secretKey,
                   sourceMail,
                   SD.DefaultRegion)
         {
         }
 
         public SESHelper(
-            string SESUserAccessKey,
-            string SESUserSecretAccessKey,
+            string accessKey,
+            string secretKey,
             string sourceMail,
             string region)
         {
             _client = new AmazonSimpleEmailServiceClient(
-                SESUserAccessKey,
-                SESUserSecretAccessKey,
+                accessKey,
+                secretKey,
                 AWSUtils.GetRegionFromString(region));
 
             _sourceMail = sourceMail;

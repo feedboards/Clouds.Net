@@ -20,14 +20,14 @@ namespace Clouds.Net.AWS.Helpers
             string clientId,
             string clientSecret,
             string userPoolId,
-            string DECognitoUserAccessKey,
-            string DECognitoUserSecretAccessKey)
+            string accessKey,
+            string secretKey)
             : this(
                   clientId,
                   clientSecret,
                   userPoolId,
-                  DECognitoUserAccessKey,
-                  DECognitoUserSecretAccessKey,
+                  accessKey,
+                  secretKey,
                   SD.DefaultRegion)
         {
         }
@@ -36,8 +36,8 @@ namespace Clouds.Net.AWS.Helpers
             string clientId,
             string clientSecret,
             string userPoolId,
-            string DECognitoUserAccessKey,
-            string DECognitoUserSecretAccessKey,
+            string accessKey,
+            string secretKey,
             string region)
         {
             _clientId = clientId ?? throw new InvalidOperationException("Client ID must be provided.");
@@ -48,7 +48,7 @@ namespace Clouds.Net.AWS.Helpers
 
             _providerClient =
                 new AmazonCognitoIdentityProviderClient(
-                    new BasicAWSCredentials(DECognitoUserAccessKey, DECognitoUserSecretAccessKey),
+                    new BasicAWSCredentials(accessKey, secretKey),
                     AWSUtils.GetRegionFromString(region));
         }
 

@@ -9,7 +9,7 @@
 	<Company>feedboards</Company>
 	<Product>Clouds.Net.AWS</Product>
 	<PackageId>Clouds.Net.AWS</PackageId>
-	<Description>Librarary aiming to simplify work with AWS Cloud</Description>
+	<Description>Library aiming to simplify work with AWS Cloud</Description>
 	<PackageTags>AWS;Amazon;cloud;S3;SQS;SES;Cognito</PackageTags>
 	<RepositoryUrl>https://github.com/feedboards/Clouds.Net.AWS</RepositoryUrl>
 	<RepositoryType>git</RepositoryType>

@@ -7,7 +7,7 @@ namespace Clouds.Net.AWS.Interfaces
         Task<GetUserResponse> GetUserAsync(string accessToken);
         Task<AdminDeleteUserResponse> DeleteUserAsync(string email);
         Task<InitiateAuthResponse> InitiateAuthAsync(string email, string password);
-        Task<SignUpResponse> SignUpAsync(string email, string password, string role);
+        Task<SignUpResponse> SignUpAsync(string username, string password, List<AttributeType> attributes);
         Task<string> GetUserRoleAsync(string accessToken);
         string GetSubIdByAccessToken(string accessToken);
     }

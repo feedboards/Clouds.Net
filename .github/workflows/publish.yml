@@ -14,13 +14,13 @@ jobs:
           dotnet-version: "8.0.x"
 
       - name: Restore dependencies
-        run: dotnet restore Clouds.Net.slnf
+        run: dotnet restore Clouds.Net.AWS.slnf
 
       - name: Build
-        run: dotnet build Clouds.Net.slnf --configuration Release --no-restore
+        run: dotnet build Clouds.Net.AWS.slnf --configuration Release --no-restore
 
       - name: Pack
-        run: dotnet pack Clouds.Net.slnf --configuration Release --no-build --output ./nupkgs -p:PackageVersion=${{ github.ref_name }}
+        run: dotnet pack Clouds.Net.AWS.slnf --configuration Release --no-build --output ./nupkgs -p:PackageVersion=${{ github.ref_name }}
 
       - name: Publish to GitHub Packages
         run: dotnet nuget push ./nupkgs/*.nupkg --source "https://api.nuget.org/v3/index.json" --api-key ${{ secrets.NUGET_API_KEY }}

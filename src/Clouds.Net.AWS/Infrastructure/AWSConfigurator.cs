@@ -40,7 +40,7 @@ namespace Clouds.Net.AWS.Infrastructure
                 userPoolId,
                 _awsOptions.AccessKey,
                 _awsOptions.SecretKey,
-                _awsOptions.Region);
+                SD.DefaultRegion);
         }
 
         public IAWSConfigurator AddCognito(string clientId, string clientSecret, string userPoolId, string accessKey, string secretKey)
@@ -53,7 +53,7 @@ namespace Clouds.Net.AWS.Infrastructure
                 userPoolId,
                 accessKey,
                 secretKey,
-                _awsOptions.Region);
+                SD.DefaultRegion);
         }
 
         public IAWSConfigurator AddCognito(string clientId, string clientSecret, string userPoolId, string region)
@@ -119,7 +119,7 @@ namespace Clouds.Net.AWS.Infrastructure
 
             return AddS3(
                 bucketName,
-                _awsOptions.Region,
+                SD.DefaultRegion,
                 _awsOptions.AccessKey,
                 _awsOptions.SecretKey);
         }
@@ -130,7 +130,7 @@ namespace Clouds.Net.AWS.Infrastructure
 
             return AddS3(
                 bucketName,
-                _awsOptions.Region,
+                SD.DefaultRegion,
                 accessKey,
                 secretKey);
         }
@@ -146,7 +146,7 @@ namespace Clouds.Net.AWS.Infrastructure
                 _awsOptions.AccessKey,
                 _awsOptions.SecretKey,
                 sourceMail,
-                _awsOptions.Region);
+                SD.DefaultRegion);
         }
 
         public IAWSConfigurator AddSES(string sourceMail, string region)
@@ -168,7 +168,7 @@ namespace Clouds.Net.AWS.Infrastructure
                 accessKey,
                 secretKey,
                 sourceMail,
-                _awsOptions.Region);
+                SD.DefaultRegion);
         }
 
         public IAWSConfigurator AddSES(string accessKey, string secretKey, string sourceMail, string region)
@@ -190,7 +190,7 @@ namespace Clouds.Net.AWS.Infrastructure
                 _awsOptions.AccessKey,
                 _awsOptions.SecretKey,
                 queueUrl,
-                _awsOptions.Region);
+                SD.DefaultRegion);
         }
 
         public IAWSConfigurator AddSQS(string queueUrl, string region)
@@ -212,7 +212,7 @@ namespace Clouds.Net.AWS.Infrastructure
                 accessKey,
                 secretKey,
                 queueUrl,
-                _awsOptions.Region);
+                SD.DefaultRegion);
         }
 
         public IAWSConfigurator AddSQS(string accessKey, string secretKey, string queueUrl, string region)
@@ -224,7 +224,7 @@ namespace Clouds.Net.AWS.Infrastructure
         }
         #endregion
 
-        public IAWSConfigurator SetCredentials(string accessKey, string secretKey)
+        public IAWSConfigurator SetDefaultCredentials(string accessKey, string secretKey)
         {
             _awsOptions.AccessKey = accessKey;
             _awsOptions.SecretKey = secretKey;
@@ -234,7 +234,7 @@ namespace Clouds.Net.AWS.Infrastructure
 
         public IAWSConfigurator SetDefaultRegion(string region)
         {
-            _awsOptions.Region = region;
+            SD.DefaultRegion = region;
 
             return this;
         }
@@ -267,7 +267,7 @@ namespace Clouds.Net.AWS.Infrastructure
 
         private void ValidateAWSDefaultRegion()
         {
-            if (string.IsNullOrEmpty(_awsOptions.Region))
+            if (string.IsNullOrEmpty(SD.DefaultRegion))
             {
                 throw new ArgumentException("Hasn't been set up default aws region");
             }

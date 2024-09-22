@@ -12,7 +12,7 @@ A clear and concise description of what the bug is.
 
 **To Reproduce**
 Steps to reproduce the error or bug (describe steps like that):
-1. Version of API (necessary)
+1. Version of library (necessary)
 2. AWS Service which you're using (necessary)
 3. Code sample of your code where you got an error (necessary)
 4. See an error (necessary)

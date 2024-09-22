@@ -1,7 +1,6 @@
 ﻿using Amazon.CognitoIdentityProvider;
 using Amazon.CognitoIdentityProvider.Model;
 using Amazon.Runtime;
-using Clouds.Net.AWS;
 using Clouds.Net.AWS.Interfaces;
 using Clouds.Net.AWS.Utils;
 using System.IdentityModel.Tokens.Jwt;
@@ -21,14 +20,14 @@ namespace Clouds.Net.AWS.Helpers
             string clientId,
             string clientSecret,
             string userPoolId,
-            string DECognitoUserAccessKey,
-            string DECognitoUserSecretAccessKey)
+            string accessKey,
+            string secretKey)
             : this(
                   clientId,
                   clientSecret,
                   userPoolId,
-                  DECognitoUserAccessKey,
-                  DECognitoUserSecretAccessKey,
+                  accessKey,
+                  secretKey,
                   SD.DefaultRegion)
         {
         }
@@ -37,8 +36,8 @@ namespace Clouds.Net.AWS.Helpers
             string clientId,
             string clientSecret,
             string userPoolId,
-            string DECognitoUserAccessKey,
-            string DECognitoUserSecretAccessKey,
+            string accessKey,
+            string secretKey,
             string region)
         {
             _clientId = clientId ?? throw new InvalidOperationException("Client ID must be provided.");
@@ -49,7 +48,7 @@ namespace Clouds.Net.AWS.Helpers
 
             _providerClient =
                 new AmazonCognitoIdentityProviderClient(
-                    new BasicAWSCredentials(DECognitoUserAccessKey, DECognitoUserSecretAccessKey),
+                    new BasicAWSCredentials(accessKey, secretKey),
                     AWSUtils.GetRegionFromString(region));
         }
 
@@ -85,19 +84,15 @@ namespace Clouds.Net.AWS.Helpers
             });
         }
 
-        public async Task<SignUpResponse> SignUpAsync(string email, string password, string role)
+        public async Task<SignUpResponse> SignUpAsync(string username, string password, List<AttributeType> attributes)
         {
             return await _providerClient.SignUpAsync(new SignUpRequest
             {
                 ClientId = _clientId,
-                SecretHash = GenerateSecretHash(email),
-                Username = email,
+                SecretHash = GenerateSecretHash(username),
+                Username = username,
                 Password = password,
-                UserAttributes = new List<AttributeType>
-                {
-                    new AttributeType { Name = "email", Value = email },
-                    new AttributeType { Name = "custom:Role", Value = role },
-                }
+                UserAttributes = attributes
             });
         }
 

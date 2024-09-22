@@ -2,6 +2,6 @@
 {
     public static class SD
     {
-        public readonly static string DefaultRegion = "us-east-1";
+        public static string DefaultRegion = "us-east-1";
     }
 }
